@@ -12,7 +12,9 @@ const ThreeDScene = () => {
         renderer = new THREE.WebGLRenderer({ alpha: true });
 
         renderer.setSize(100, 100);
-        containerRef.current.appendChild(renderer.domElement);
+        if (containerRef.current) {
+            containerRef.current.appendChild(renderer.domElement);
+        }
 
         createHead(scene);
         createEyes(scene);
@@ -21,9 +23,9 @@ const ThreeDScene = () => {
 
         const isMobile = window.innerWidth < 768; // Verifica se é mobile
 
-        const handleOrientation = (event) => {
-            const beta = event.beta; // Tilt para cima/baixo
-            const gamma = event.gamma; // Tilt para os lados
+        const handleOrientation = (event: DeviceOrientationEvent) => {
+            const beta = event.beta || 0; // Tilt para cima/baixo
+            const gamma = event.gamma || 0; // Tilt para os lados
             head.rotation.x = (beta / 180) * Math.PI / 2; // Ajuste conforme necessário
             head.rotation.y = (gamma / 360) * Math.PI / 2; // Ajuste conforme necessário
         };
@@ -49,7 +51,7 @@ const ThreeDScene = () => {
 
         return () => {
             window.removeEventListener('deviceorientation', handleOrientation);
-            if (containerRef.current && renderer.domElement) {
+            if (containerRef.current && renderer && renderer.domElement) {
                 containerRef.current.removeChild(renderer.domElement);
             }
         };
@@ -62,19 +64,19 @@ const ThreeDScene = () => {
 
     let mouseX = 50, mouseY = 50;
 
-    const onMouseMove = (event) => {
+    const onMouseMove = (event: MouseEvent) => {
         mouseX = event.clientX;
         mouseY = event.clientY;
     };
 
-    const createHead = (scene) => {
+    const createHead = (scene: THREE.Scene) => {
         const geometry = new THREE.SphereGeometry(0.6, 32, 32);
         const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
         head = new THREE.Mesh(geometry, material);
         scene.add(head);
     };
 
-    const createEyes = (scene) => {
+    const createEyes = (scene: THREE.Scene) => {
         for (let i = -1; i <= 1; i += 2) {
             const eyeGeometry = new THREE.SphereGeometry(0.15, 32, 32);
             const eyeMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
@@ -83,7 +85,7 @@ const ThreeDScene = () => {
             head.add(eye);
         }
     };
-    const createHat = (scene) => {
+    const createHat = (scene: THREE.Scene) => {
         // Criar a base do chapéu (círculo)
         const baseGeometry = new THREE.CylinderGeometry(0.8, 0.8, 0.1, 32);
         const baseMaterial = new THREE.MeshBasicMaterial({ color: 0x393939 });
