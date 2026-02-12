@@ -61,8 +61,9 @@ export function HeroActions() {
     // If we are in the fixed content, 'element.offsetTop' gives position relative to the fixed wrapper (top: 0).
     // So element.offsetTop is effectively the scroll position we want to reach.
 
-    // However, if we are scrolling the Drei container, we just need to scroll TO that value.
-    const target = element.offsetTop;
+    // Center the element in the viewport
+    const containerHeight = container === window ? window.innerHeight : (container as HTMLElement).clientHeight;
+    const target = element.offsetTop - (containerHeight - element.offsetHeight) / 2;
 
     const change = target - start;
     let startTime = 0;

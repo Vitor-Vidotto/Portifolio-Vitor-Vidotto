@@ -62,7 +62,8 @@ export default function Home() {
         target = c.scrollHeight - c.clientHeight;
       }
     } else {
-      target = element.offsetTop + offset;
+      const containerHeight = container === window ? window.innerHeight : (container as HTMLElement).clientHeight;
+      target = element.offsetTop - (containerHeight - element.offsetHeight) / 2 + offset;
     }
 
     const change = target - start;
@@ -93,7 +94,7 @@ export default function Home() {
       <Scene>
 
         {/* SECTION 1: HERO */}
-        <section className="h-screen w-full flex flex-col items-center justify-center text-center px-4 relative mb-[10vh] sm:mb-[20vh]">
+        <section className="h-screen w-full flex flex-col items-center justify-center text-center px-4 relative mb-[5vh] sm:mb-[10vh]">
           <div className="flex flex-col items-center justify-center relative z-10">
             <h1 className="text-5xl sm:text-6xl md:text-8xl font-extrabold text-gradient animate-fadeIn">
               Vitor Vidotto
@@ -108,21 +109,21 @@ export default function Home() {
         </section>
 
         {/* SECTION 2: PROJECTS */}
-        <section id="projects" className="min-h-screen w-full relative mb-[20vh] sm:mb-[40vh] flex flex-col items-center justify-center py-12 sm:py-24">
+        <section id="projects" className="min-h-screen w-full relative mb-[10vh] sm:mb-[20vh] flex flex-col items-center justify-center py-12 sm:py-24">
           <div className="w-full max-w-[90vw] lg:max-w-7xl px-4 z-10">
             <ProjectsSection />
           </div>
         </section>
 
         {/* SECTION 3: ABOUT */}
-        <section id="about" className="min-h-screen w-full relative mb-[20vh] sm:mb-[50vh] flex flex-col items-center justify-center">
+        <section id="about" className="min-h-screen w-full relative flex flex-col items-center justify-center">
           <div className="w-full max-w-[90vw] lg:max-w-7xl px-4 z-10">
             <AboutSection />
           </div>
         </section>
 
         {/* SECTION 4: INFO / FOOTER */}
-        <section id="contact" className="h-screen w-full flex flex-col items-center justify-center relative text-white">
+        <section id="contact" className="w-full py-12 flex flex-col items-center relative text-white">
           <div className="z-10 relative">
             <ContactSection />
           </div>
@@ -131,7 +132,7 @@ export default function Home() {
       </Scene>
 
       <button
-        onClick={() => smoothScrollTo('bottom')} // Scroll to the very end (page 7 / max)
+        onClick={() => smoothScrollTo('bottom')} // Scroll to the very end
         className="fixed bottom-4 right-4 z-50 flex items-center justify-center cursor-pointer"
         title="Ir para o final"
       >

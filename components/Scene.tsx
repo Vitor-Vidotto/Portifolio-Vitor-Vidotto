@@ -21,20 +21,17 @@ function SceneContent() {
     const letterRef = useRef<THREE.Group>(null)
 
     useFrame((state) => {
-        const isWide = width > 5;
-        // Trigger earlier on wide screens because content is shorter (grid columns)
-        const triggerOffset = isWide ? -0.1 : 0;
-
-        const r1 = scroll.range(0, 0.15)
-        const r2_enter = scroll.range(0.005, 0.15)
-        const r2_exit = scroll.range(0.55 + triggerOffset, 0.15)
-        const r3_enter = scroll.range(0.58 + triggerOffset, 0.15)
-        const r3_exit = scroll.range(0.75 + triggerOffset, 0.08)
-        const r4 = scroll.range(0.80 + triggerOffset, 0.10)
+        // Stretch ranges to compensate for the shorter page layout
+        const r1 = scroll.range(0, 0.25)
+        const r2_enter = scroll.range(0.1, 0.3)
+        const r2_exit = scroll.range(0.45, 0.3)
+        const r3_enter = scroll.range(0.5, 0.3)
+        const r3_exit = scroll.range(0.75, 0.2)
+        const r4 = scroll.range(0.85, 0.15)
 
         // RESPONSIVE CALCULATIONS
+        const isWide = width > 5;
         // Wide screen: objects to the left. Narrow screen: objects centered or slightly offset.
-
         const leftSide = isWide ? -width / 10 : 0;
         const center = 0;
 
@@ -133,8 +130,8 @@ export function Scene({ children }: SceneProps) {
         const handleResize = () => {
             // Mobile layout (vertical projects) needs more scroll distance
             const isMobile = window.innerWidth < 768
-            // Slightly increased for mobile to ensure last section (contact) is fully reachable with new spacing
-            setPages(isMobile ? 9 : 7)
+            // Reduced further as Contact is now a compact footer
+            setPages(isMobile ? 6 : 6)
         }
 
         // Initial check
