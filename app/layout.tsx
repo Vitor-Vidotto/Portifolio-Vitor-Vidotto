@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   description: "Portifólio Digital",
 };
 
+import Navbar from "@/components/Navbar";
+import Scene from "@/components/Scene";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -25,9 +28,17 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-purple-500/30`}
       >
-        {children}
+        <Navbar />
+        <div className="relative z-0">
+          <div className="fixed inset-0 pointer-events-none">
+            <Scene />
+          </div>
+          <div className="relative z-10 w-full overflow-x-hidden">
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );
