@@ -127,7 +127,7 @@ export function Scene({ children }: SceneProps) {
         const handleResize = () => {
             // Mobile layout (vertical projects) needs more scroll distance
             const isMobile = window.innerWidth < 768
-            setPages(isMobile ? 9.1 : 7)
+            setPages(isMobile ? 8.5 : 7)
         }
 
         // Initial check
