@@ -21,16 +21,20 @@ function SceneContent() {
     const letterRef = useRef<THREE.Group>(null)
 
     useFrame((state) => {
+        const isWide = width > 5;
+        // Trigger earlier on wide screens because content is shorter (grid columns)
+        const triggerOffset = isWide ? -0.1 : 0;
+
         const r1 = scroll.range(0, 0.15)
         const r2_enter = scroll.range(0.005, 0.15)
-        const r2_exit = scroll.range(0.55, 0.15)
-        const r3_enter = scroll.range(0.58, 0.15)
-        const r3_exit = scroll.range(0.75, 0.08)
-        const r4 = scroll.range(0.80, 0.10)
+        const r2_exit = scroll.range(0.55 + triggerOffset, 0.15)
+        const r3_enter = scroll.range(0.58 + triggerOffset, 0.15)
+        const r3_exit = scroll.range(0.75 + triggerOffset, 0.08)
+        const r4 = scroll.range(0.80 + triggerOffset, 0.10)
 
         // RESPONSIVE CALCULATIONS
         // Wide screen: objects to the left. Narrow screen: objects centered or slightly offset.
-        const isWide = width > 5;
+
         const leftSide = isWide ? -width / 10 : 0;
         const center = 0;
 
