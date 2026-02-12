@@ -3,8 +3,8 @@ import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
 const ThreeDScene = () => {
-    const containerRef = useRef(null);
-    let head, camera, renderer;
+    const containerRef = useRef<HTMLDivElement>(null);
+    let head: THREE.Object3D | THREE.Group, camera: THREE.PerspectiveCamera, renderer: THREE.WebGLRenderer;
 
     useEffect(() => {
         const scene = new THREE.Scene();

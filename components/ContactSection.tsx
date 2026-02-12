@@ -34,7 +34,7 @@ const ContactSection = () => {
             y: 0,
             transition: {
                 duration: 0.8,
-                ease: "easeOut",
+                ease: "easeOut" as const,
                 staggerChildren: 0.2
             }
         }
