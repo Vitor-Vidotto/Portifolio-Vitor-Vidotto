@@ -38,7 +38,7 @@ function SceneContent() {
         if (macbookRef.current) {
             // Start at center, move to top-center (or top-left if wide)
             const startPos = new THREE.Vector3(leftSide, -1.5, 0)
-            const endPos = new THREE.Vector3(leftSide, height / 2 + 2, -5)
+            const endPos = new THREE.Vector3(leftSide, height * 2, -5)
 
             macbookRef.current.position.lerpVectors(startPos, endPos, r1)
 
@@ -53,7 +53,7 @@ function SceneContent() {
         if (documentRef.current) {
             const startPos = new THREE.Vector3(leftSide, -height, -1)
             const midPos = new THREE.Vector3(leftSide, -1, -1) // Visible state
-            const endPos = new THREE.Vector3(leftSide, height / 2 + 2, -5)
+            const endPos = new THREE.Vector3(leftSide, height * 2, -5)
 
             if (scroll.offset < 0.55) {
                 documentRef.current.position.lerpVectors(startPos, midPos, r2_enter)
@@ -69,7 +69,7 @@ function SceneContent() {
         if (computerRef.current) {
             const startPos = new THREE.Vector3(width / 2 + 2, -height, -1) // Enter from right/bottom
             const centerPos = new THREE.Vector3(center, 0, -1) // Center screen for "About"
-            const endPos = new THREE.Vector3(-width / 2 - 2, height / 2, -5) // Exit to left/top
+            const endPos = new THREE.Vector3(-width / 2 - 2, height * 2, -5) // Exit to left/top
 
             if (scroll.offset < 0.75) {
                 computerRef.current.position.lerpVectors(startPos, centerPos, r3_enter)
