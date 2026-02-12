@@ -40,18 +40,18 @@ const projectsData = [
     tag: ["Todos", "Desktop"],
     gitUrl: "https://github.com/Vitor-Vidotto/easy-cd",
     previewUrl: "https://github.com/Vitor-Vidotto/easy-cd",
-    },
-    {
-      id: 8,
-      title: "Site de Guilda",
-      description: "Desenvolvi um site para uma guilda de um jogo, onde os usuários poderiam ver informações da mesma e equipamentos que eles usam em suas composições de combate.",
-      image: "/images/projects/8.png",
-      tag: ["Todos", "Desktop"],
-      gitUrl: "https://github.com/Vitor-Vidotto/Helldivers",
-      previewUrl: "https://helldivers.vercel.app/",
-    },
-    {
-      id: 2,
+  },
+  {
+    id: 8,
+    title: "Site de Guilda",
+    description: "Desenvolvi um site para uma guilda de um jogo, onde os usuários poderiam ver informações da mesma e equipamentos que eles usam em suas composições de combate.",
+    image: "/images/projects/8.png",
+    tag: ["Todos", "Desktop"],
+    gitUrl: "https://github.com/Vitor-Vidotto/Helldivers",
+    previewUrl: "https://helldivers.vercel.app/",
+  },
+  {
+    id: 2,
     title: "App de Controle C#",
     description: " Desenvolvi um projeto em c# onde o mesmo serve para monitorar e enviar arquivos via FTP, fazendo que os mesmos sirvam de backup para a maquina e que sirva também para controle e geração de logs.",
     image: "/images/projects/2.png",
@@ -77,14 +77,14 @@ const projectsData = [
     gitUrl: "https://github.com/Vitor-Vidotto/python-automations",
     previewUrl: "https://github.com/Vitor-Vidotto/python-automations",
   },
-  
+
 ];
 
 const ProjectsSection = () => {
   const [tag, setTag] = useState("Todos");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-  
+
   const handleTagChange = (newTag) => {
     setTag(newTag);
   };
@@ -127,7 +127,7 @@ const ProjectsSection = () => {
       </div>
       <ul
         ref={ref}
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12"
       >
         {filteredProjects.map((project, index) => (
           <motion.li

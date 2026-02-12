@@ -89,13 +89,13 @@ export default function Home() {
   }
 
   return (
-    <main className="w-full">
+    <main className="w-full overflow-x-hidden">
       <Scene>
 
         {/* SECTION 1: HERO */}
-        <section className="h-screen w-screen flex flex-col items-center justify-center text-center px-4 relative mb-[20vh]">
-          <div className="flex flex-col items-center justify-center">
-            <h1 className="text-5xl sm:text-6xl font-extrabold text-gradient animate-fadeIn">
+        <section className="h-screen w-full flex flex-col items-center justify-center text-center px-4 relative mb-[10vh] sm:mb-[20vh]">
+          <div className="flex flex-col items-center justify-center relative z-10">
+            <h1 className="text-5xl sm:text-6xl md:text-8xl font-extrabold text-gradient animate-fadeIn">
               Vitor Vidotto
             </h1>
             <TypewriterLoop />
@@ -108,22 +108,24 @@ export default function Home() {
         </section>
 
         {/* SECTION 2: PROJECTS */}
-        <section id="projects" className="min-h-screen w-screen relative mb-[40vh] flex flex-col items-center justify-center py-24">
-          <div className="w-full max-w-7xl px-4">
+        <section id="projects" className="min-h-screen w-full relative mb-[20vh] sm:mb-[40vh] flex flex-col items-center justify-center py-12 sm:py-24">
+          <div className="w-full max-w-[90vw] lg:max-w-7xl px-4 z-10">
             <ProjectsSection />
           </div>
         </section>
 
         {/* SECTION 3: ABOUT */}
-        <section id="about" className="h-screen w-screen relative mb-[50vh] flex flex-col items-center justify-center">
-          <div className="w-full max-w-7xl px-4">
+        <section id="about" className="min-h-screen w-full relative mb-[20vh] sm:mb-[50vh] flex flex-col items-center justify-center">
+          <div className="w-full max-w-[90vw] lg:max-w-7xl px-4 z-10">
             <AboutSection />
           </div>
         </section>
 
         {/* SECTION 4: INFO / FOOTER */}
-        <section id="contact" className="h-screen w-screen flex flex-col items-center justify-center relative text-white">
-          <ContactSection />
+        <section id="contact" className="h-screen w-full flex flex-col items-center justify-center relative text-white">
+          <div className="z-10 relative">
+            <ContactSection />
+          </div>
         </section>
 
       </Scene>
@@ -141,7 +143,7 @@ export default function Home() {
             </div>
           }
         >
-          <div className="w-24 h-24 relative hover:scale-110 transition-transform duration-300">
+          <div className="w-16 h-16 sm:w-24 sm:h-24 relative hover:scale-110 transition-transform duration-300">
             <ThreeDScene />
           </div>
         </ActiveTooltip>
