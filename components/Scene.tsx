@@ -31,7 +31,7 @@ function SceneContent() {
         // RESPONSIVE CALCULATIONS
         // Wide screen: objects to the left. Narrow screen: objects centered or slightly offset.
         const isWide = width > 5;
-        const leftSide = isWide ? -width / 3 : 0;
+        const leftSide = isWide ? -width / 10 : 0;
         const center = 0;
 
         // Macbook
