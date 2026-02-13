@@ -36,7 +36,7 @@ export function HeroActions() {
             text-white font-medium shadow-lg cursor-pointer transition-all hover:bg-white/20"
           >
             <Image src="/images/person.svg" alt="Sobre mim" width={20} height={20} />
-            Me Conheça
+            Conheça-me
 
             <span className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
           </motion.div>
