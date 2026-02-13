@@ -1,6 +1,8 @@
 "use client"
 
+import ActiveTooltip from '@/components/ActiveTooltip'
 import { HeroActions } from '@/components/HeroActions'
+import ThreeDScene from '@/components/ThreeDScene'
 import TypewriterLoop from '@/components/typeloop'
 
 export default function Home() {
@@ -15,6 +17,22 @@ export default function Home() {
           <TypewriterLoop />
           <HeroActions />
         </div>
+        <a
+          href="/contact"
+          rel="noopener noreferrer"
+          className="fixed bottom-4 right-4 z-50 rounded-full flex items-center justify-center text-sm sm:text-base"
+          title="Entrar em contato"
+        >
+          <ActiveTooltip
+            tooltipText={
+              <>
+                Precisa de ajuda? <br /> Entre em contato!
+              </>
+            }
+          >
+            <ThreeDScene />
+          </ActiveTooltip>
+        </a>
       </section>
     </main>
   )
